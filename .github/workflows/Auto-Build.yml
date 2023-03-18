@@ -28,7 +28,7 @@ jobs:
           echo "DATE=$date" >> $GITHUB_ENV
 
       - name: 克隆项目
-        run: git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS.git
+        run: git clone -b main --depth=1 https://github.com/xpfoxs/TVBoxOS.git
         
       - name: 运行自定义脚本
         run: |
