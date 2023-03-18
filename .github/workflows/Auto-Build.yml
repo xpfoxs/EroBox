@@ -1,0 +1,84 @@
+name: 编译EroBox
+
+on:
+#  release:
+#    types: [published]
+  push:
+    branches:
+      - master
+    paths:
+      - 'start'
+  schedule:
+    - cron: 0 20 * * *
+  watch:
+    types: [started]
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查
+        uses: actions/checkout@v2
+
+      - name: 设置日期
+        run: |
+          sudo timedatectl set-timezone 'Asia/Shanghai'
+          date=$(date +%Y-%m-%d)
+          echo "DATE=$date" >> $GITHUB_ENV
+
+      - name: 克隆项目
+        run: git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS.git
+        
+      - name: 运行自定义脚本
+        run: |
+          chmod +x custom.sh
+          bash ${{ github.workspace }}/custom.sh
+          
+      - name: 使用Gradle编译
+        run: |
+          num=$(find ${{ github.workspace }} -name gradlew  | awk -F"/" '{print NF-1}')
+          DIR=$(find ${{ github.workspace }} -name gradlew  | cut -d \/ -f$num)
+          cd $DIR
+          chmod +x gradlew
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          
+      - name: 准备应用程序
+        run: |
+          mkdir -p ${{ github.workspace }}/apk/         
+          for file in `find ~ -name "*release*.apk" -print`; do
+            mv "$file" apk/EroBox_${{ env.DATE }}.apk
+          done
+          
+      - name: 上传应用到程序Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: com.github.tvbox.osc
+          path: ${{ github.workspace }}/apk/*
+
+      - name: 上传应用程序到Release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.SUPER_TOKEN }}
+          file: ${{ github.workspace }}/apk/EroBox_${{ env.DATE }}.apk
+          asset_name: EroBox_${{ env.DATE }}.apk
+          tag: ${{ env.DATE }}
+          overwrite: true
+          file_glob: true
+          
+      - name: 清理Actions空间
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+            token: ${{ secrets.SUPER_TOKEN }}
+            repository: ${{ github.repository }}
+            retain_days: 14
+            keep_minimum_runs: 0
+
+      - name: 删除releases
+        uses: danshui-git/delete-older-releases@main
+        with:
+          repo: ${{ github.repository }}
+          keep_latest: 14
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}
