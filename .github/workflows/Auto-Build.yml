@@ -58,7 +58,7 @@ jobs:
           path: ${{ github.workspace }}/apk/*
 
       - name: 上传应用程序到Release
-        uses: svenstaro/upload-release-action@v3-release
+        uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.SUPER_TOKEN }}
           file: ${{ github.workspace }}/apk/EroBox_${{ env.DATE }}.apk
@@ -68,7 +68,7 @@ jobs:
           file_glob: true
           
       - name: 清理Actions空间
-        uses: Mattraks/delete-workflow-runs@v3
+        uses: Mattraks/delete-workflow-runs@v2
         with:
             token: ${{ secrets.SUPER_TOKEN }}
             repository: ${{ github.repository }}
