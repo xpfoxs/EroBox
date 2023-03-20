@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检查
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 设置日期
         run: |
@@ -58,7 +58,7 @@ jobs:
           path: ${{ github.workspace }}/apk/*
 
       - name: 上传应用程序到Release
-        uses: svenstaro/upload-release-action@v1-release
+        uses: svenstaro/upload-release-action@v3-release
         with:
           repo_token: ${{ secrets.SUPER_TOKEN }}
           file: ${{ github.workspace }}/apk/EroBox_${{ env.DATE }}.apk
@@ -68,7 +68,7 @@ jobs:
           file_glob: true
           
       - name: 清理Actions空间
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@v3
         with:
             token: ${{ secrets.SUPER_TOKEN }}
             repository: ${{ github.repository }}
