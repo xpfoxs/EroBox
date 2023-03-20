@@ -28,7 +28,8 @@ jobs:
           echo "DATE=$date" >> $GITHUB_ENV
 
       - name: 克隆项目
-        run: git clone -b main --depth=1 https://github.com/DaDiaoo/TVBoxOS-1.git
+        #run: git clone -b main --depth=1 https://github.com/DaDiaoo/TVBoxOS-1.git
+        run: git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS.git
         
       - name: 运行自定义脚本
         run: |
@@ -81,7 +82,6 @@ jobs:
           keep_minimum_runs: 3
 
       - name: 删除releases
-        if: env.Del_Releases == 'true'
         uses: danshui-git/delete-older-releases@main
         with:
           repo: ${{ github.repository }}
