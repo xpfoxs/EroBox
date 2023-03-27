@@ -80,7 +80,9 @@ jobs:
         with:
           retain_days: 3
           keep_minimum_runs: 3
-
+          token: ${{ secrets.SUPER_TOKEN }}
+          repository: ${{ github.repository }}
+          
       - name: 删除releases
         uses: danshui-git/delete-older-releases@main
         with:
