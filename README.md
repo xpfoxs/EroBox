@@ -1,5 +1,10 @@
 # EroBox
 
+![](https://github.com/xpfoxs/EroBox/badge.svg)
+![](https://img.shields.io/github/downloads/xpfoxs/EroBox/total)
+![](https://img.shields.io/github/v/release/xpfoxs/EroBox)
+
+
 === Source Code - Editing the app default settings ===
 /src/main/java/com/github/tvbox/osc/base/App.java
 
@@ -20,7 +25,3 @@
 - 直播 (Optional) > Input Live URL (http) address. If empty, will take Live URL from Source file
 - EPG (Optional) > Input EPG URL (http) address. If empty, will take EPG URL from Source file. If not found in Source file, default from http://epg.51zmt.top:8000/api/diyp/
 
-
-![](https://github.com/xiaotan8/Openwrt-actions/workflows/Openwrt-AutoBuild/badge.svg)
-![](https://img.shields.io/github/downloads/xiaotan8/Openwrt-actions/total)
-![](https://img.shields.io/github/v/release/xiaotan8/Openwrt-actions)
