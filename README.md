@@ -1,6 +1,6 @@
 # EroBox
 
-[![编译EroBox](https://github.com/xpfoxs/EroBox/actions/workflows/Auto-Build.yml/badge.svg)](https://github.com/xpfoxs/EroBox/actions/workflows/Auto-Build.yml)
+[![Build](https://github.com/xpfoxs/EroBox/actions/workflows/Auto-Build.yml/badge.svg)](https://github.com/xpfoxs/EroBox/actions/workflows/Auto-Build.yml)
 ![](https://img.shields.io/github/downloads/xpfoxs/EroBox/total)
 ![](https://img.shields.io/github/v/release/xpfoxs/EroBox)
 
