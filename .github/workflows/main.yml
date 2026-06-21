@@ -52,7 +52,7 @@ jobs:
           done
           
       - name: 上传应用到程序Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4   # 修复点 1：升级到 v4
         with:
           name: com.github.tvbox.osc
           path: ${{ github.workspace }}/apk/*
@@ -84,7 +84,7 @@ jobs:
           repository: ${{ github.repository }}
           
       - name: 删除releases
-        uses: danshui-git/delete-older-releases@main
+        uses: dev-drprasad/delete-older-releases@v0.3   # 修复点 2：替换为有效仓库
         with:
           repo: ${{ github.repository }}
           keep_latest: 7
