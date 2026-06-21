@@ -52,7 +52,7 @@ jobs:
           done
           
       - name: 上传应用到程序Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: com.github.tvbox.osc
           path: ${{ github.workspace }}/apk/*
