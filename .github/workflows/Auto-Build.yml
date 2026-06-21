@@ -84,10 +84,12 @@ jobs:
           repository: ${{ github.repository }}
           
       - name: 删除releases
-        uses: dev-drprasad/delete-older-releases@v0.3   # 修复点 2：替换为有效仓库
+        uses: dev-drprasad/delete-older-releases@v0.2.1
         with:
           repo: ${{ github.repository }}
           keep_latest: 7
           delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}
