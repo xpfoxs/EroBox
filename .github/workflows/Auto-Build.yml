@@ -84,7 +84,7 @@ jobs:
           repository: ${{ github.repository }}
           
       - name: 删除releases
-        uses: danshui-git/delete-older-releases@main
+        uses: dev-drprasad/delete-older-releases
         with:
           repo: ${{ github.repository }}
           keep_latest: 7
