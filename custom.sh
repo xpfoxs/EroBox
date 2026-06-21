@@ -67,5 +67,5 @@ sed -i '/public Object\[\] proxyLoca/a\    try {\n        if(param.containsKey(\
 #FongMi的jar支持
 echo "" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
 echo "-keep class com.google.gson.**{*;}" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
-
+echo "sed -i 's/pythonImplementation project(":\\pyramid")/pythonImplementation project(":pyramid")/g' $CURRENT_DIR/$DIR/app/build.gradle"
 echo 'DIY end'
