@@ -34,6 +34,7 @@ jobs:
       - name: 运行自定义脚本
         run: |
           chmod +x custom.sh
+          sed -i 's/pythonImplementation project(":\\pyramid")/pythonImplementation project(":pyramid")/g' $CURRENT_DIR/$DIR/app/build.gradle
           bash ${{ github.workspace }}/custom.sh
           
       - name: 使用Gradle编译
